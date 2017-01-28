@@ -4,8 +4,7 @@ import os
 import json
 from sys import argv
 
-if list({'-v','--verbose'} & {arg.lower() for arg in argv}):
-    verbose=True
+verbose=True if list({'-v','--verbose'} & {arg.lower() for arg in argv}) else False
 
 
 resourceTypes={'A','MX'}
