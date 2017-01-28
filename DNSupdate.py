@@ -81,7 +81,7 @@ except:
     print("Using IPchicken")
 
 print('Retrieved IP Address: '+ str(IP))
-if verbose: print('------Configuration------ \n\n'+config+'\n\n')
+if verbose: print('------Configuration------ \n\n'+str(config)+'\n\n')
 
 #Update DNS records for selected domains within each zone.
 for zone in config['zones']:
