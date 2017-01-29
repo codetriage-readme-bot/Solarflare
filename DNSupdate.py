@@ -67,9 +67,9 @@ def fetch(server):
     return myip if len(myip) > 0 else 'noip'
 
 #Updates Cloudflare's DNS records for specified domains in a zone.
-def recordUpdate(zoneID,record,IP):
+def recordUpdate(zoneID,record,IP,recordID):
     global config
-    r= requests.put('https://api.cloudflare.com/client/v4/zones/{0}/dns_records/{1}'.format(zoneID,id),json={'type':record['type'],'name':record['name'],'content':IP,'proxied':record['proxied']},headers={'X-Auth-Email':config['email'],'X-Auth-Key':config['key']})
+    r= requests.put('https://api.cloudflare.com/client/v4/zones/{0}/dns_records/{1}'.format(zoneID,recordID),json={'type':record['type'],'name':record['name'],'content':IP,'proxied':record['proxied']},headers={'X-Auth-Email':config['email'],'X-Auth-Key':config['key']})
     if verbose: print("Set DNS for "+record['name'])
 
 #Get external IP address.  Try two different sites in case one is non-functional.
@@ -87,7 +87,7 @@ if verbose: print('------Configuration------ \n\n'+str(config)+'\n\n')
 for zone in config['zones']:
     for record in config['zones'][zone]:
         if verbose: print(config['zones'][zone][record])
-        recordUpdate(zone,config['zones'][zone][record],IP)
+        recordUpdate(zone,config['zones'][zone][record],IP,record)
 print("DNS records updated!")
 
 
