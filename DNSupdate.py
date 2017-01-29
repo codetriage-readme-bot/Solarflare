@@ -88,6 +88,7 @@ for zone in config['zones']:
     for record in config['zones'][zone]:
         if verbose: print(config['zones'][zone][record])
         recordUpdate(zone,config['zones'][zone][record],IP)
+print("DNS records updated!")
 
 
 
