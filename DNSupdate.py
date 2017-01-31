@@ -5,7 +5,7 @@ import json
 from sys import argv
 
 verbose=True if list({'-v','--verbose'} & {arg.lower() for arg in argv}) else False
-
+add=True if list({'-a','--add'} & {arg.lower() for arg in argv}) else False
 
 resourceTypes={'A','MX'}
 
